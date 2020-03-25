@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Characters",
+    "imageUrl": "characters2.jpg"
+  },
+  {
+    "id": 2,
+    "name": "PvP",
+    "imageUrl": "pvp.jpg"
+  },
+  {
+    "id": 3,
+    "name": "WvW",
+    "imageUrl": "wvw.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Guilds",
+    "imageUrl": "guilds.jpg"
+  }
+]
