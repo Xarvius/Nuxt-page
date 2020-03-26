@@ -8,13 +8,12 @@
 
     <div v-else>
       <h1>Guilds</h1>
-      <p>Here your guilds list:</p>
       <div
         v-for="(guild, index) in guilds"
         :key="index"
         class="shadow p-3 mb-5 bg-white rounded"
       >
-        <Guild :guild-id="guild" />
+        <Guild :guildId="guild" />
       </div>
     </div>
   </div>
@@ -43,3 +42,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.mb-5 {
+  margin-bottom: 1.6rem !important;
+}
+</style>

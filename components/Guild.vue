@@ -7,10 +7,7 @@
 import axios from 'axios'
 export default {
   props: {
-    guildID: {
-      type: String,
-      default: ''
-    }
+    guildId: String
   },
   data() {
     return {
@@ -21,18 +18,14 @@ export default {
     this.guildDetails()
   },
   methods: {
-    guildDetails: async () => {
-      try {
-        await axios
-          .get(
-            `https://cors-anywhere.herokuapp.com/https://api.guildwars2.com/v2/guild/${this.guildID}`
-          )
-          .then((res) => {
-            this.data = res.status === 200 ? res.data : null
-          })
-      } catch (error) {
-        this.data = null
-      }
+    guildDetails() {
+      axios
+        .get(
+          `https://cors-anywhere.herokuapp.com/https://api.guildwars2.com/v2/guild/${this.guildId}`
+        )
+        .then((res) => {
+          this.data = res.status === 200 ? res.data : null
+        })
     }
   }
 }
