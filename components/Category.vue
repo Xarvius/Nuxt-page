@@ -1,15 +1,24 @@
 <template>
-  <div class="image-container">
-    <NLink :to="'/Account/' + name">
-      <img :src="`../${imageUrl}`" class="img-fluid" alt="Responsive image" />
-      <div class="centered">
-        <p>{{ name }}</p>
+  <div class="row">
+    <div v-for="category in categories" :key="category.id" class="col-md-4">
+      <div class="image-container">
+        <NLink :to="'/Account/' + category.name">
+          <img
+            :src="`../${category.imageUrl}`"
+            class="img-fluid"
+            alt="Responsive image"
+          />
+          <div class="centered">
+            <p>{{ category.name }}</p>
+          </div>
+        </NLink>
       </div>
-    </NLink>
+    </div>
   </div>
 </template>
 
 <script>
+import categories from '@/data/categories.json'
 export default {
   props: {
     name: {
@@ -19,6 +28,11 @@ export default {
     imageUrl: {
       type: String,
       default: ''
+    }
+  },
+  data() {
+    return {
+      categories
     }
   }
 }

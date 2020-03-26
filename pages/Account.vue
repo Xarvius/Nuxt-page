@@ -7,11 +7,7 @@
     <div v-if="data" class="panel">
       <Nick :name="data.name" :commander="data.commander" />
       <BasicAccountInfo />
-      <div class="row">
-        <div v-for="category in categories" :key="category.id" class="col-md-4">
-          <Category :name="category.name" :image-url="category.imageUrl" />
-        </div>
-      </div>
+      <Category />
     </div>
   </div>
 </template>
@@ -22,7 +18,6 @@ import Category from '~/components/Category.vue'
 import Nick from '~/components/Nick.vue'
 import ApiForm from '~/components/ApiForm.vue'
 import BasicAccountInfo from '~/components/BasicAccountInfo.vue'
-import categories from '@/data/categories.json'
 
 export default {
   components: {
@@ -33,8 +28,10 @@ export default {
   },
   data() {
     return {
-      categories,
-      data: null
+      data: {
+        name: null,
+        commander: null
+      }
     }
   },
   mounted() {
@@ -56,6 +53,10 @@ export default {
         )
         .then((res) => {
           this.data = res.status === 200 ? res.data : null
+          localStorage.API = apiKey
+          localStorage.name = res.data.name
+          localStorage.commander = res.data.commander
+          localStorage.guilds = res.data.guilds
         })
     }
   }
