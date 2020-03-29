@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div v-for="category in categories" :key="category.id" class="col-md-4">
+    <div v-for="category in categories" :key="category.id" class="col-md-6">
       <div class="image-container">
         <NLink :to="'/Account/' + category.name">
           <img
@@ -51,7 +51,7 @@ export default {
 .centered {
   position: absolute;
   top: 58%;
-  left: 35%;
+  left: 38%;
   color: white;
   font-size: 1.7em;
   font-weight: bold;

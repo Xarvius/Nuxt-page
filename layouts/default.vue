@@ -14,7 +14,9 @@
         </NLink>
       </ul>
     </header>
-    <div class="container-fluid col-sm-8 shadow p-3 mb-5 bg-white rounded">
+    <div
+      class="container-fluid col-sm-8 shadow p-3 mb-5 bg-white rounded overflow-auto"
+    >
       <nuxt />
     </div>
   </div>
@@ -42,10 +44,10 @@ body {
 }
 
 .header {
-  position: absolute;
   align-items: center;
 }
-.container {
+.container-fluid {
+  height: 100%;
   margin-top: 1%;
 }
 .nav__link {
@@ -59,5 +61,11 @@ body {
 }
 .nav-item:hover {
   box-shadow: 0 0 15px;
+}
+@media (max-width: 576px) {
+  .container-fluid {
+    overflow-y: visible;
+    max-height: 70%;
+  }
 }
 </style>
