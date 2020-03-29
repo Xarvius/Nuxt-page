@@ -13,7 +13,7 @@
         :key="index"
         class="shadow p-3 mb-5 bg-white rounded"
       >
-        <Guild :guildId="guild" />
+        <Guild :guild-id="guild" :index="index" />
       </div>
     </div>
   </div>
