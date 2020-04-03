@@ -7,35 +7,30 @@
       </h3>
     </div>
     <p>Rank points total: {{ stats.pvp_rank_points }}</p>
-    <div class="d-flex">
-      <h3 class="p-2">Total Wins: {{ stats.aggregate.wins }}</h3>
-      <h3 class="p-2">Total Losses: {{ stats.aggregate.losses }}</h3>
-      <h3 class="p-2">Win ratio: {{ totalRatio }}%</h3>
-    </div>
+    <Ratio :wins="stats.aggregate.wins" :losses="stats.aggregate.losses" />
     <div
-      v-for="[profesion, data] in Object.entries(stats.professions)"
-      :key="profesion"
+      v-for="[profession, data] in Object.entries(stats.professions)"
+      :key="profession"
+      class="shadow p-3 mb-5 bg-white rounded"
     >
-      {{ profesion }}: {{ data }}
+      <PvPprofession :data="data" :index="profession" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import PvPprofession from '~/components/PvPprofession.vue'
+import Ratio from '~/components/Ratio.vue'
 export default {
+  components: {
+    PvPprofession,
+    Ratio
+  },
   data() {
     return {
       accountAPI: null,
       stats: null
-    }
-  },
-  computed: {
-    total() {
-      return this.stats.aggregate.wins + this.stats.aggregate.losses
-    },
-    totalRatio() {
-      return ((this.stats.aggregate.wins * 100) / this.total).toFixed(2)
     }
   },
   methods: {
@@ -51,7 +46,6 @@ export default {
         )
         .then((res) => {
           this.stats = res.status === 200 ? res.data : null
-          console.log(this.stats)
         })
     }
   },
