@@ -1,6 +1,6 @@
 # gw2-manager
 
-> Project for learning
+> Nuxt project (SPA), using GW2 API.
 
 ## Build Setup
 
